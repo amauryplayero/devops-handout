@@ -33,7 +33,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
     
     app.get('/api/students', (req, res) => {
         res.status(200).send(students)
-        rollbar.info('Student list requested')
+        
     })
     
     app.post('/api/students', (req, res) => {
@@ -42,7 +42,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
         const index = students.findIndex(student => {
             return student === name
         })
-        
+        rollbar.info('Student added')
         try {
             if (index === -1 && name !== '') {
                 students.push(name)
