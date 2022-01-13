@@ -23,9 +23,9 @@ rollbar.log('Hello world!')
 
 const students = ['Jimmy', 'Timothy', 'Jimothy']
 
-app.get('/', function(req,res){
-    res.sendFile(path.join(__dirname, '../index.html'))
-});
+// app.get('/', function(req,res){
+//     res.sendFile(path.join(__dirname, '../index.html'))
+// });
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'))
