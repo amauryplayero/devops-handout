@@ -44,7 +44,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
         const index = students.findIndex(student => {
             return student === name
         })
-       
+         
         try {
             if (index === -1 && name !== '') {
                 students.push(name)
@@ -64,6 +64,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
         
         students.splice(targetIndex, 1)
         res.status(200).send(students)
+        rollbar.critical('DELETED STUDENTS FOREVER BITCHES')
     })
     
     const port = process.env.PORT || 5050

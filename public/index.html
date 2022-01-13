@@ -53,6 +53,7 @@
                         .delete(`/api/students/${theIndexValue}`)
                         .then(res => {
                             putTheThingInTheView(res)
+                            Rollbar.critical('MM M MMM The flavors are melting in my tongue!!!')
                         })
                 })
             })
