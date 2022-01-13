@@ -33,6 +33,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
     
     app.get('/api/students', (req, res) => {
         res.status(200).send(students)
+        rollbar.log('hi log works.')
         
     })
     
@@ -54,7 +55,6 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
             }
         } catch (err) {
             console.log(err)
-            rollbar.info('Student added')
         }
     })
     
@@ -69,9 +69,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
     
     app.listen(port, () => console.log(`Server listening on ${port}`))
     
-    // let nonExist = () => {
-        //     rollbar.info('rollback on try is working')
-        // }
+
         
         try{
             nonExist()

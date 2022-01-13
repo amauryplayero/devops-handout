@@ -50,6 +50,7 @@
                 .post('/api/students', { name: nameInput.value })
                 .then(res => {
                     putTheThingInTheView(res)
+                    rollbar.info('hi')
                 })
                 .catch(err => {
                     nameInput.value = ''
