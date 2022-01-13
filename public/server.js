@@ -42,7 +42,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
         const index = students.findIndex(student => {
             return student === name
         })
-        rollbar.info('Student added')
+       
         try {
             if (index === -1 && name !== '') {
                 students.push(name)
@@ -54,6 +54,7 @@ const students = ['Jimmy', 'Timothy', 'Jimothy']
             }
         } catch (err) {
             console.log(err)
+            rollbar.info('Student added')
         }
     })
     
