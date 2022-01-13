@@ -24,56 +24,56 @@ rollbar.log('Hello world!')
 const students = ['Jimmy', 'Timothy', 'Jimothy']
 
 // app.get('/', function(req,res){
-//     res.sendFile(path.join(__dirname, '../index.html'))
-// });
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/index.html'))
-})
-
-app.get('/api/students', (req, res) => {
-    res.status(200).send(students)
-    rollbar.info('Student list requested')
-})
-
-app.post('/api/students', (req, res) => {
-   let {name} = req.body
-
-   const index = students.findIndex(student => {
-       return student === name
-   })
-
-   try {
-       if (index === -1 && name !== '') {
-           students.push(name)
-           res.status(200).send(students)
-       } else if (name === ''){
-           res.status(400).send('You must enter a name.')
-       } else {
-           res.status(400).send('That student already exists.')
-       }
-   } catch (err) {
-       console.log(err)
-   }
-})
-
-app.delete('/api/students/:index', (req, res) => {
-    const targetIndex = +req.params.index
+    //     res.sendFile(path.join(__dirname, '../index.html'))
+    // });
     
-    students.splice(targetIndex, 1)
-    res.status(200).send(students)
-})
-
-const port = process.env.PORT || 5050
-
-app.listen(port, () => console.log(`Server listening on ${port}`))
-
-// let nonExist = () => {
-//     rollbar.info('rollback on try is working')
-// }
-
-try{
-    nonExist()
-} catch(error) {
-    rollbar.warning('nonExist() does not exist')
-}
+    app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, '/index.html'))
+    })
+    
+    app.get('/api/students', (req, res) => {
+        res.status(200).send(students)
+        rollbar.info('Student list requested')
+    })
+    
+    app.post('/api/students', (req, res) => {
+        let {name} = req.body
+        
+        const index = students.findIndex(student => {
+            return student === name
+        })
+        
+        try {
+            if (index === -1 && name !== '') {
+                students.push(name)
+                res.status(200).send(students)
+            } else if (name === ''){
+                res.status(400).send('You must enter a name.')
+            } else {
+                res.status(400).send('That student already exists.')
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+    
+    app.delete('/api/students/:index', (req, res) => {
+        const targetIndex = +req.params.index
+        
+        students.splice(targetIndex, 1)
+        res.status(200).send(students)
+    })
+    
+    const port = process.env.PORT || 5050
+    
+    app.listen(port, () => console.log(`Server listening on ${port}`))
+    
+    // let nonExist = () => {
+        //     rollbar.info('rollback on try is working')
+        // }
+        
+        try{
+            nonExist()
+        } catch(error) {
+            rollbar.warning('nonExist() does not exist')
+        }
