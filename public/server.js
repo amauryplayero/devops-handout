@@ -5,26 +5,27 @@ const cors = require('cors')
 
 app.use(express.json())
 app.use(cors())
-
-app.get('/', function(req,res){
-    res.sendFile(path.join(__dirname, '../index.html'))
-});
-
 app.use(express.static('public'))
+
+
 
 
 // include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
-  accessToken: 'c8be8bd5948e4f82b9d81af8c810ddbf',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
+    accessToken: 'c8be8bd5948e4f82b9d81af8c810ddbf',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
 })
 
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
 
 const students = ['Jimmy', 'Timothy', 'Jimothy']
+
+app.get('/', function(req,res){
+    res.sendFile(path.join(__dirname, '../index.html'))
+});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'))
