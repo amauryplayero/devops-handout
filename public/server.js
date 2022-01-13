@@ -67,3 +67,13 @@ app.delete('/api/students/:index', (req, res) => {
 const port = process.env.PORT || 5050
 
 app.listen(port, () => console.log(`Server listening on ${port}`))
+
+// let nonExist = () => {
+//     rollbar.info('rollback on try is working')
+// }
+
+try{
+    nonExist()
+} catch(error) {
+    rollbar.warning('nonExist() does not exist')
+}
