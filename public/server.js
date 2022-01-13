@@ -16,6 +16,7 @@ var rollbar = new Rollbar({
     accessToken: 'c8be8bd5948e4f82b9d81af8c810ddbf',
     captureUncaught: true,
     captureUnhandledRejections: true,
+    captureIp: true
 })
 
 // record a generic message and send it to Rollbar
